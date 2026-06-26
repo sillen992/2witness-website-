@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+  @font-face { font-family:"Poppins"; font-weight:400; src:url("./fonts/Poppins-Regular.ttf") format("truetype"); font-display:swap; }
+  @font-face { font-family:"Poppins"; font-weight:500; src:url("./fonts/Poppins-Medium.ttf") format("truetype"); font-display:swap; }
+  @font-face { font-family:"Poppins"; font-weight:600; src:url("./fonts/Poppins-SemiBold.ttf") format("truetype"); font-display:swap; }
+  @font-face { font-family:"Poppins"; font-weight:700; src:url("./fonts/Poppins-Bold.ttf") format("truetype"); font-display:swap; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  html, body { margin:0; padding:0; font-family:"Poppins", system-ui, sans-serif; background:#06141A; -webkit-font-smoothing:antialiased; }
+  ::selection { background:#2DD4BF; color:#04121A; }
+  @keyframes w-float { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-12px); } }
+  @keyframes w-floatslow { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-7px); } }
+  @keyframes w-pulse { 0%,100%{ opacity:1; transform:scale(1);} 50%{ opacity:.45; transform:scale(.82);} }
+  @keyframes w-ring { 0%{ box-shadow:0 0 0 0 rgba(45,212,191,.5);} 100%{ box-shadow:0 0 0 14px rgba(45,212,191,0);} }
+  @keyframes w-grow { from{ height:6px; opacity:.4;} to{ opacity:1;} }
+  @keyframes w-fade { from{ opacity:0; transform:translateY(8px);} to{ opacity:1; transform:translateY(0);} }
+  @keyframes w-scan { 0%{ transform:translateY(0);} 100%{ transform:translateY(150px);} }
+  @keyframes w-cta-blink { 0%,100%{ box-shadow:0 0 0 0 rgba(45,212,191,.5); transform:scale(1);} 50%{ box-shadow:0 0 0 7px rgba(45,212,191,0); transform:scale(1.03);} }
+  @media (max-width:880px){
+    .w-hero-grid{ grid-template-columns:1fr !important; }
+    .w-nav-links{ display:none !important; }
+    .w-nav-cta-wrap{ display:none !important; }
+    .w-menu-btn{ display:flex !important; }
+    .w-flow-row{ flex-direction:column !important; align-items:center !important; gap:0 !important; }
+    .w-flow-item{ flex-direction:column !important; gap:0 !important; width:100% !important; max-width:320px; align-items:center !important; }
+    .w-flow-card{ flex-direction:row !important; width:100% !important; justify-content:flex-start !important; gap:14px; text-align:left !important; padding:14px 18px !important; min-width:0 !important; }
+    .w-flow-ico{ margin-bottom:0 !important; flex-shrink:0; }
+    .w-flow-lbl{ font-size:15px !important; }
+    .w-flow-arrow{ transform:rotate(90deg) !important; margin:7px 0 !important; }
+    .w-h1{ font-size:38px !important; line-height:46px !important; }
+    .w-pad{ padding-left:20px !important; padding-right:20px !important; }
+    .w-mockup{ transform:none !important; }
+    .w-two-col{ grid-template-columns:1fr !important; }
+  }
+  @media (max-width:560px){
+    .w-h1{ font-size:31px !important; line-height:38px !important; }
+    .w-sec-h{ font-size:28px !important; line-height:34px !important; }
+  }
+  @media (max-width:880px){
+    .w-mockup{ min-height:0 !important; display:flex !important; flex-direction:column !important; align-items:center !important; gap:18px !important; margin-top:8px; }
+    .w-mock-dash{ position:relative !important; right:auto !important; top:auto !important; width:100% !important; max-width:360px !important; order:2; }
+    .w-mock-phone{ position:relative !important; left:auto !important; bottom:auto !important; order:1; }
+    .w-mock-chip{ display:none !important; }
+    .w-demo-form input, .w-demo-form textarea{ font-size:16px !important; }
+  }
+</style>
+</helmet>
+
+<div style="background:#06141A; color:#fff; overflow-x:hidden;">
+
+  <!-- ================= HEADER ================= -->
+  <header style="position:sticky; top:0; z-index:100; backdrop-filter:blur(14px); background:rgba(6,20,26,.78); border-bottom:1px solid rgba(255,255,255,.07);">
+    <div class="w-pad" style="max-width:1240px; margin:0 auto; padding:16px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
+      <a href="#top" style="display:flex; align-items:center; gap:11px; text-decoration:none;">
+        <span style="display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; border-radius:10px; background:linear-gradient(135deg,#2DD4BF,#34D399); box-shadow:0 4px 16px rgba(45,212,191,.35);">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M12 2.6 4.4 5.8v5.1c0 4.6 3.2 8.9 7.6 10.3 4.4-1.4 7.6-5.7 7.6-10.3V5.8L12 2.6Z" fill="#04121A"></path><circle cx="12" cy="10.6" r="2.5" fill="#2DD4BF"></circle><path d="M7.6 16.2c.7-1.9 2.4-3 4.4-3s3.7 1.1 4.4 3" stroke="#2DD4BF" stroke-width="1.5" stroke-linecap="round"></path></svg>
+        </span>
+        <span style="font-weight:700; font-size:19px; letter-spacing:-.3px; color:#fff;">2Witness</span>
+      </a>
+      <nav class="w-nav-links" style="display:flex; align-items:center; gap:30px;">
+        <a href="#sa-fungerar" style="color:#B4C6CB; text-decoration:none; font-size:15px; font-weight:500;" style-hover="color:#fff;">Så fungerar det</a>
+        <a href="#foretag" style="color:#B4C6CB; text-decoration:none; font-size:15px; font-weight:500;" style-hover="color:#fff;">För företag</a>
+        <a href="#myndigheter" style="color:#B4C6CB; text-decoration:none; font-size:15px; font-weight:500;" style-hover="color:#fff;">För myndigheter</a>
+        <a href="#sakerhet" style="color:#B4C6CB; text-decoration:none; font-size:15px; font-weight:500;" style-hover="color:#fff;">Säkerhet</a>
+        <a href="#demo" style="color:#B4C6CB; text-decoration:none; font-size:15px; font-weight:500;" style-hover="color:#fff;">Kontakta oss</a>
+      </nav>
+      <div class="w-nav-cta-wrap" style="display:flex;">
+        <a href="#demo" style="display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,#2DD4BF,#34D399); color:#04121A; font-weight:600; font-size:15px; padding:11px 22px; border-radius:8px; text-decoration:none; box-shadow:0 6px 20px rgba(45,212,191,.3); transition:transform .15s ease, box-shadow .15s ease;" style-hover="transform:translateY(-1px); box-shadow:0 10px 28px rgba(45,212,191,.45);">Kontakta oss</a>
+      </div>
+      <button class="w-menu-btn" onClick="{{ toggleMenu }}" style="display:none; width:42px; height:42px; align-items:center; justify-content:center; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:9px; cursor:pointer;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+      </button>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div class="w-pad" style="padding:8px 20px 20px; display:flex; flex-direction:column; gap:4px; border-top:1px solid rgba(255,255,255,.06);">
+        <a href="#sa-fungerar" onClick="{{ closeMenu }}" style="color:#D6E2E5; text-decoration:none; font-size:16px; font-weight:500; padding:12px 8px;">Så fungerar det</a>
+        <a href="#foretag" onClick="{{ closeMenu }}" style="color:#D6E2E5; text-decoration:none; font-size:16px; font-weight:500; padding:12px 8px;">För företag</a>
+        <a href="#myndigheter" onClick="{{ closeMenu }}" style="color:#D6E2E5; text-decoration:none; font-size:16px; font-weight:500; padding:12px 8px;">För myndigheter</a>
+        <a href="#sakerhet" onClick="{{ closeMenu }}" style="color:#D6E2E5; text-decoration:none; font-size:16px; font-weight:500; padding:12px 8px;">Säkerhet</a>
+        <a href="#demo" onClick="{{ closeMenu }}" style="color:#D6E2E5; text-decoration:none; font-size:16px; font-weight:500; padding:12px 8px;">Kontakta oss</a>
+        <a href="#demo" onClick="{{ closeMenu }}" style="margin-top:8px; text-align:center; background:linear-gradient(135deg,#2DD4BF,#34D399); color:#04121A; font-weight:600; font-size:16px; padding:13px; border-radius:8px; text-decoration:none;">Kontakta oss</a>
+      </div>
+    </sc-if>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section id="top" class="w-pad" style="position:relative; padding:64px 40px 72px; background:radial-gradient(1100px 520px at 78% 8%, rgba(45,212,191,.14), transparent 60%), radial-gradient(800px 480px at 8% 90%, rgba(52,211,153,.10), transparent 60%), #06141A;">
+    <div class="w-hero-grid" style="max-width:1240px; margin:0 auto; display:grid; grid-template-columns:1.02fr .98fr; gap:56px; align-items:center;">
+      <div>
+        <div style="display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:100px; background:rgba(45,212,191,.10); border:1px solid rgba(45,212,191,.28); margin-bottom:24px;">
+          <span style="width:7px; height:7px; border-radius:50%; background:#2DD4BF; box-shadow:0 0 0 0 rgba(45,212,191,.5); animation:w-ring 1.8s ease-out infinite;"></span>
+          <span style="font-size:12.5px; font-weight:500; color:#7FE8D8; letter-spacing:.3px;">Trygg och anonym incidentrapportering</span>
+        </div>
+        <h1 class="w-h1" style="font-size:52px; line-height:60px; font-weight:700; letter-spacing:-1.2px; margin:0 0 22px; color:#fff;">Rapportera tryggt.<br>Vittna anonymt.<br><span style="background:linear-gradient(120deg,#2DD4BF,#7DE8A0); -webkit-background-clip:text; background-clip:text; color:transparent;">Få tydliga rapporter direkt.</span></h1>
+        <p style="font-size:18px; line-height:29px; color:#A9BDC2; margin:0 0 32px; max-width:520px;">2Witness gör incidentrapportering snabb, säker och anonym för individer, företag och samhällsaktörer som behöver agera på rätt information.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:14px; margin-bottom:38px;">
+          <a href="#demo" style="display:inline-flex; align-items:center; gap:9px; background:linear-gradient(135deg,#2DD4BF,#34D399); color:#04121A; font-weight:600; font-size:16px; padding:15px 28px; border-radius:9px; text-decoration:none; box-shadow:0 10px 30px rgba(45,212,191,.32); transition:transform .15s ease, box-shadow .15s ease;" style-hover="transform:translateY(-2px); box-shadow:0 16px 38px rgba(45,212,191,.5);">Kontakta oss
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#04121A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+          </a>
+          <a href="#sa-fungerar" style="display:inline-flex; align-items:center; gap:9px; background:rgba(255,255,255,.05); color:#fff; font-weight:500; font-size:16px; padding:15px 26px; border-radius:9px; text-decoration:none; border:1px solid rgba(255,255,255,.16); transition:background .15s ease, border-color .15s ease;" style-hover="background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.32);">Se hur det fungerar</a>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:10px 22px;">
+          <sc-for list="{{ heroBadges }}" as="b" hint-placeholder-count="4">
+            <span style="display:inline-flex; align-items:center; gap:8px; font-size:13.5px; color:#9FB6BB; font-weight:500;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+              {{ b }}
+            </span>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- MOCKUP -->
+      <div class="w-mockup" style="position:relative; min-height:530px;">
+        <!-- Dashboard (platform with all data) -->
+        <div class="w-mock-dash" style="position:absolute; right:0; top:0; width:100%; background:#0C2129; border:1px solid rgba(255,255,255,.09); border-radius:18px; box-shadow:0 30px 70px rgba(0,0,0,.5); overflow:hidden; animation:w-floatslow 7s ease-in-out infinite; z-index:1;">
+          <div style="display:flex; align-items:center; gap:10px; padding:13px 16px; border-bottom:1px solid rgba(255,255,255,.07); background:rgba(255,255,255,.02);">
+            <span style="width:9px; height:9px; border-radius:50%; background:#F86A6A;"></span>
+            <span style="width:9px; height:9px; border-radius:50%; background:#FBBF4D;"></span>
+            <span style="width:9px; height:9px; border-radius:50%; background:#4ADE80;"></span>
+            <span style="margin-left:8px; font-size:12px; color:#7E969C; font-weight:500;">2Witness · Översikt</span>
+          </div>
+          <div style="padding:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+              <div>
+                <div style="font-size:11px; letter-spacing:.5px; text-transform:uppercase; color:#6F8990; font-weight:600; margin-bottom:3px;">Översikt</div>
+                <div style="font-size:16px; font-weight:600; color:#fff;">Inrapporterat material</div>
+              </div>
+              <span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600; color:#7DE8A0; background:rgba(74,222,128,.12); border:1px solid rgba(74,222,128,.25); padding:5px 10px; border-radius:100px;"><span style="width:6px; height:6px; border-radius:50%; background:#4ADE80; animation:w-pulse 1.4s ease-in-out infinite;"></span>Live</span>
+            </div>
+            <!-- KPI stats -->
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin-bottom:14px;">
+              <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:11px;">
+                <div style="font-size:9.5px; color:#6F8990; text-transform:uppercase; letter-spacing:.3px; margin-bottom:6px;">Inskickat</div>
+                <div style="font-size:19px; font-weight:700; color:#fff; line-height:20px;">1 248</div>
+                <div style="font-size:10px; color:#7DE8A0; margin-top:3px;">↑ 12% i mån</div>
+              </div>
+              <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:11px;">
+                <div style="font-size:9.5px; color:#6F8990; text-transform:uppercase; letter-spacing:.3px; margin-bottom:6px;">Anonyma</div>
+                <div style="font-size:19px; font-weight:700; color:#fff; line-height:20px;">92%</div>
+                <div style="font-size:10px; color:#6F8990; margin-top:3px;">av alla</div>
+              </div>
+              <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:11px;">
+                <div style="font-size:9.5px; color:#6F8990; text-transform:uppercase; letter-spacing:.3px; margin-bottom:6px;">Åtgärdade</div>
+                <div style="font-size:19px; font-weight:700; color:#fff; line-height:20px;">87%</div>
+                <div style="font-size:10px; color:#7DE8A0; margin-top:3px;">↑ 4% i mån</div>
+              </div>
+            </div>
+            <!-- maps: Sweden + Stockholm area -->
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
+              <!-- Sweden map -->
+              <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:12px;">
+                <div style="font-size:10.5px; color:#6F8990; text-transform:uppercase; letter-spacing:.4px; margin-bottom:8px;">Sverige</div>
+                <div style="position:relative; height:182px; border-radius:8px; overflow:hidden; background-color:rgba(255,255,255,.015); background-image:radial-gradient(rgba(127,168,170,.13) 1px, transparent 1px); background-size:13px 13px;">
+                  <svg width="118" height="174" viewBox="0 0 120 150" fill="none" style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);">
+                    <path d="M58 4 C54 12 60 18 56 26 C52 34 60 40 55 50 C50 60 58 66 54 78 C50 90 60 96 56 108 C53 118 60 126 54 136 C51 142 56 148 62 146 C70 143 70 132 76 124 C82 116 76 108 82 98 C88 88 80 80 86 70 C92 60 84 52 88 42 C92 32 84 24 86 14 C87 9 80 4 72 4 C64 4 60 2 58 4 Z" fill="rgba(45,212,191,.10)" stroke="rgba(45,212,191,.4)" stroke-width="1.2" stroke-dasharray="3 3"></path>
+                  </svg>
+                  <span style="position:absolute; left:42px; top:42px; width:7px; height:7px; border-radius:50%; background:#34D399; box-shadow:0 0 0 0 rgba(52,211,153,.5); animation:w-ring 2.3s ease-out infinite;"></span>
+                  <span style="position:absolute; left:54px; top:92px; width:7px; height:7px; border-radius:50%; background:#34D399; box-shadow:0 0 0 0 rgba(52,211,153,.5); animation:w-ring 1.7s ease-out infinite;"></span>
+                  <span style="position:absolute; left:66px; top:108px; width:12px; height:12px; border-radius:50%; background:#2DD4BF; box-shadow:0 0 0 0 rgba(45,212,191,.5); animation:w-ring 1.6s ease-out infinite; z-index:2;"></span>
+                </div>
+              </div>
+              <!-- Stockholm area map -->
+              <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:12px;">
+                <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+                  <div style="font-size:10.5px; color:#6F8990; text-transform:uppercase; letter-spacing:.4px;">Stockholm</div>
+                  <div style="font-size:10px; font-weight:600; color:#7DE8D8;">42</div>
+                </div>
+                <div style="position:relative; height:182px; border-radius:8px; overflow:hidden; background:#0A1A20;">
+                  <svg width="100%" height="100%" viewBox="0 0 160 182" fill="none" preserveAspectRatio="xMidYMid slice" style="position:absolute; inset:0;">
+                    <!-- water -->
+                    <path d="M0 96 C26 88 44 104 66 100 C92 95 104 112 134 106 C148 103 160 110 160 110 L160 182 L0 182 Z" fill="rgba(45,212,191,.10)"></path>
+                    <path d="M0 96 C26 88 44 104 66 100 C92 95 104 112 134 106 C148 103 160 110 160 110" stroke="rgba(45,212,191,.3)" stroke-width="1"></path>
+                    <path d="M64 120 C72 116 86 122 92 132 C96 140 90 150 80 150 C70 150 60 140 64 120 Z" fill="rgba(45,212,191,.06)" stroke="rgba(45,212,191,.22)" stroke-width="1"></path>
+                    <!-- roads -->
+                    <path d="M14 18 L150 70 M30 0 L96 182 M0 64 L160 40 M110 0 L70 182" stroke="rgba(127,168,170,.16)" stroke-width="1.2"></path>
+                    <path d="M0 130 L160 150" stroke="rgba(127,168,170,.12)" stroke-width="1"></path>
+                  </svg>
+                  <!-- pins clustered over central districts -->
+                  <span style="position:absolute; left:60px; top:44px; width:8px; height:8px; border-radius:50%; background:#34D399; box-shadow:0 0 0 0 rgba(52,211,153,.5); animation:w-ring 2.1s ease-out infinite;"></span>
+                  <span style="position:absolute; left:92px; top:60px; width:7px; height:7px; border-radius:50%; background:#34D399; box-shadow:0 0 0 0 rgba(52,211,153,.5); animation:w-ring 2.4s ease-out infinite;"></span>
+                  <span style="position:absolute; left:74px; top:84px; width:14px; height:14px; border-radius:50%; background:#2DD4BF; box-shadow:0 0 0 0 rgba(45,212,191,.5); animation:w-ring 1.6s ease-out infinite; z-index:2;"></span>
+                  <span style="position:absolute; left:108px; top:96px; width:8px; height:8px; border-radius:50%; background:#34D399; box-shadow:0 0 0 0 rgba(52,211,153,.5); animation:w-ring 1.9s ease-out infinite;"></span>
+                  <span style="position:absolute; left:46px; top:118px; width:7px; height:7px; border-radius:50%; background:#34D399; box-shadow:0 0 0 0 rgba(52,211,153,.5); animation:w-ring 2.2s ease-out infinite;"></span>
+                  <span style="position:absolute; left:96px; top:62px; display:flex; align-items:center; gap:5px; background:rgba(8,20,26,.96); border:1px solid rgba(45,212,191,.3); border-radius:6px; padding:3px 7px; font-size:9px; font-weight:600; color:#fff; white-space:nowrap; box-shadow:0 6px 16px rgba(0,0,0,.4); z-index:3;">Norrmalm <span style="color:#7DE8D8;">11</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- floating status chip (top-right, over dashboard header) -->
+        <div class="w-mock-chip" style="position:absolute; right:8px; top:0; display:flex; align-items:center; gap:9px; background:rgba(10,26,32,.96); border:1px solid rgba(74,222,128,.3); border-radius:12px; padding:10px 13px; box-shadow:0 14px 34px rgba(0,0,0,.5); animation:w-floatslow 6.2s ease-in-out infinite; z-index:5;">
+          <span style="width:26px; height:26px; border-radius:50%; background:rgba(74,222,128,.16); display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+          </span>
+          <div>
+            <div style="font-size:12px; font-weight:600; color:#fff; line-height:14px;">Anonymt mottaget</div>
+            <div style="font-size:10px; color:#7E969C;">Rapport skapad automatiskt</div>
+          </div>
+        </div>
+
+        <!-- Phone (bottom-left, in front of dashboard) -->
+        <div class="w-mock-phone" style="position:absolute; left:0; bottom:0; width:184px; background:linear-gradient(150deg,#42434A,#16171A 55%,#0C0D10); border-radius:42px; padding:5px; box-shadow:0 34px 64px rgba(0,0,0,.6), inset 0 0 0 1.5px rgba(255,255,255,.10); animation:w-float 6s ease-in-out infinite; z-index:3;">
+          <div style="background:#0F2730; border-radius:37px; overflow:hidden; position:relative;">
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 19px 2px;">
+              <span style="font-size:10.5px; font-weight:600; color:#fff; letter-spacing:.3px;">9:41</span>
+              <div style="display:flex; align-items:center; gap:4px;">
+                <svg width="14" height="10" viewBox="0 0 18 12" fill="#fff"><rect x="0" y="8" width="3" height="4" rx="1"></rect><rect x="5" y="5.5" width="3" height="6.5" rx="1"></rect><rect x="10" y="2.5" width="3" height="9.5" rx="1"></rect><rect x="15" y="0" width="3" height="12" rx="1"></rect></svg>
+                <svg width="13" height="10" viewBox="0 0 16 12" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.6C3 2.6 5.4 1.6 8 1.6s5 1 7 3M3.3 7.1C4.6 5.9 6.2 5.3 8 5.3s3.4.6 4.7 1.8M5.7 9.5c.7-.6 1.4-.9 2.3-.9s1.6.3 2.3.9"></path></svg>
+                <svg width="20" height="10" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="3" stroke="#fff" stroke-opacity=".5"></rect><rect x="3" y="3" width="16" height="6" rx="1.5" fill="#fff"></rect><rect x="23.5" y="4" width="2" height="4" rx="1" fill="#fff" fill-opacity=".5"></rect></svg>
+              </div>
+            </div>
+            <div style="position:absolute; top:9px; left:50%; transform:translateX(-50%); width:66px; height:19px; border-radius:100px; background:#000; z-index:5;"></div>
+            <div style="padding:15px 14px 15px;">
+              <sc-if value="{{ phoneNotSent }}" hint-placeholder-val="{{ true }}">
+                <div>
+                  <div style="display:flex; align-items:center; gap:8px; margin-bottom:13px;">
+                    <span style="width:27px; height:27px; border-radius:8px; background:rgba(45,212,191,.14); display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>
+                    </span>
+                    <div>
+                      <div style="font-size:12px; font-weight:600; color:#fff; line-height:14px;">Anonym rapport</div>
+                      <div style="font-size:9px; color:#7DE8D8; margin-top:1px;">Helt anonymt · Steg 2 av 3</div>
+                    </div>
+                  </div>
+                  <div style="font-size:10.5px; color:#8AA3A9; line-height:16px; margin-bottom:11px;">Din identitet skyddas och kan inte spåras.</div>
+                  <div style="background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07); border-radius:10px; padding:11px; margin-bottom:9px;">
+                    <div style="height:6px; width:92%; border-radius:4px; background:rgba(255,255,255,.13); margin-bottom:7px;"></div>
+                    <div style="height:6px; width:74%; border-radius:4px; background:rgba(255,255,255,.11);"></div>
+                  </div>
+                  <div style="display:flex; gap:5px; margin-bottom:12px; flex-wrap:wrap;">
+                    <span style="display:inline-flex; align-items:center; gap:4px; font-size:9px; color:#7DE8D8; background:rgba(45,212,191,.10); border:1px solid rgba(45,212,191,.22); padding:4px 7px; border-radius:100px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#7DE8D8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>Krypterat</span>
+                    <span style="font-size:9px; color:#8AA3A9; background:rgba(255,255,255,.05); padding:4px 7px; border-radius:100px;">Ingen spårning</span>
+                  </div>
+                  <button onClick="{{ sendPhone }}" style="width:100%; display:flex; align-items:center; justify-content:center; gap:6px; background:linear-gradient(135deg,#2DD4BF,#34D399); color:#04121A; font-size:12px; font-weight:600; padding:11px; border-radius:10px; border:none; cursor:pointer; font-family:inherit; animation:w-cta-blink 1.8s ease-in-out infinite;" style-hover="animation:none; filter:brightness(1.06);">Skicka anonymt
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#04121A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7Z"></path></svg>
+                  </button>
+                </div>
+              </sc-if>
+              <sc-if value="{{ phoneSent }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:22px 6px 18px;">
+                  <span style="width:54px; height:54px; border-radius:50%; background:rgba(74,222,128,.14); border:1px solid rgba(74,222,128,.32); display:inline-flex; align-items:center; justify-content:center; margin-bottom:16px; animation:w-fade .35s ease;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                  </span>
+                  <div style="font-size:14px; font-weight:600; color:#fff; line-height:19px; margin-bottom:7px;">Tack för att du<br>rapporterat in</div>
+                  <div style="font-size:10px; color:#8AA3A9; line-height:15px; margin-bottom:14px;">Din rapport har tagits emot helt anonymt och behandlas nu säkert.</div>
+                  <span style="display:inline-flex; align-items:center; gap:5px; font-size:9px; font-weight:600; color:#7DE8A0; background:rgba(74,222,128,.12); border:1px solid rgba(74,222,128,.24); padding:5px 10px; border-radius:100px;"><span style="width:5px; height:5px; border-radius:50%; background:#4ADE80;"></span>Mottaget · Ref #4821</span>
+                  <button onClick="{{ resetPhone }}" style="margin-top:14px; background:rgba(255,255,255,.06); color:#C9DADD; font-size:10px; font-weight:500; padding:8px 14px; border-radius:8px; border:1px solid rgba(255,255,255,.14); cursor:pointer; font-family:inherit;">Skicka en ny rapport</button>
+                </div>
+              </sc-if>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section></div>
+  
+
+  <!-- ================= PROBLEM ================= -->
+  <section class="w-pad" style="padding:60px 40px; background:#F3F6F5; color:#0B2027;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="max-width:680px; margin-bottom:48px;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#2C9B8C; margin-bottom:14px;">Utmaningen</div>
+        <h2 class="w-sec-h" style="font-size:38px; line-height:46px; font-weight:700; letter-spacing:-.6px; margin:0 0 16px; color:#0B2027;">Många händelser rapporteras aldrig</h2>
+        <p style="font-size:18px; line-height:29px; color:#516268; margin:0;">Människor låter ofta bli att rapportera på grund av rädsla, osäkerhet eller krångliga processer. Resultatet blir att viktig information aldrig når fram.</p>
+      </div>
+      <div class="w-two-col" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+        <sc-for list="{{ problems }}" as="p" hint-placeholder-count="3">
+          <div style="background:#fff; border:1px solid #E6ECEA; border-radius:16px; padding:28px; box-shadow:0 1px 3px rgba(0,0,0,.04);">
+            <span style="display:inline-flex; width:46px; height:46px; align-items:center; justify-content:center; border-radius:12px; background:#FBEEE9; margin-bottom:18px;">{{ p.icon }}</span>
+            <h3 style="font-size:19px; line-height:26px; font-weight:600; margin:0 0 9px; color:#0B2027;">{{ p.title }}</h3>
+            <p style="font-size:15px; line-height:23px; color:#5A6B70; margin:0;">{{ p.text }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SOLUTION (3 steps) ================= -->
+  <section id="sa-fungerar" class="w-pad" style="padding:60px 40px; background:#06141A;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="text-align:center; max-width:680px; margin:0 auto 56px;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#2DD4BF; margin-bottom:14px;">Lösningen</div>
+        <h2 class="w-sec-h" style="font-size:38px; line-height:46px; font-weight:700; letter-spacing:-.6px; margin:0; color:#fff;">En trygg rapporteringskanal från första signal till färdig rapport</h2>
+      </div>
+      <div class="w-two-col" style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+          <div style="position:relative; background:linear-gradient(180deg,rgba(45,212,191,.06),rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:30px;">
+            <div style="display:flex; align-items:center; gap:14px; margin-bottom:20px;">
+              <span style="font-size:13px; font-weight:700; color:#04121A; width:30px; height:30px; border-radius:9px; background:linear-gradient(135deg,#2DD4BF,#34D399); display:inline-flex; align-items:center; justify-content:center;">{{ s.num }}</span>
+              <span style="height:1px; flex:1; background:linear-gradient(90deg,rgba(45,212,191,.4),transparent);"></span>
+            </div>
+            <span style="display:inline-flex; width:48px; height:48px; align-items:center; justify-content:center; border-radius:13px; background:rgba(45,212,191,.10); border:1px solid rgba(45,212,191,.2); margin-bottom:18px;">{{ s.icon }}</span>
+            <h3 style="font-size:20px; line-height:27px; font-weight:600; margin:0 0 10px; color:#fff;">{{ s.title }}</h3>
+            <p style="font-size:15px; line-height:23px; color:#A0B5BA; margin:0;">{{ s.text }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRODUCT (4 cards) ================= -->
+  <section class="w-pad" style="padding:60px 40px; background:#F3F6F5; color:#0B2027;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="max-width:680px; margin-bottom:48px;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#2C9B8C; margin-bottom:14px;">Plattformen</div>
+        <h2 class="w-sec-h" style="font-size:38px; line-height:46px; font-weight:700; letter-spacing:-.6px; margin:0; color:#0B2027;">Byggt för snabbare och säkrare hantering</h2>
+      </div>
+      <div class="w-two-col" style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
+        <sc-for list="{{ features }}" as="f" hint-placeholder-count="4">
+          <div style="background:#fff; border:1px solid #E6ECEA; border-radius:16px; padding:26px; box-shadow:0 1px 3px rgba(0,0,0,.04); transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;" style-hover="transform:translateY(-4px); box-shadow:0 14px 32px rgba(20,60,55,.12); border-color:#BEEAE2;">
+            <span style="display:inline-flex; width:46px; height:46px; align-items:center; justify-content:center; border-radius:12px; background:linear-gradient(135deg,rgba(45,212,191,.16),rgba(52,211,153,.12)); margin-bottom:18px;">{{ f.icon }}</span>
+            <h3 style="font-size:17px; line-height:24px; font-weight:600; margin:0 0 9px; color:#0B2027;">{{ f.title }}</h3>
+            <p style="font-size:14.5px; line-height:22px; color:#5A6B70; margin:0;">{{ f.text }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AUDIENCES ================= -->
+  <section class="w-pad" style="padding:60px 40px; background:#06141A;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="text-align:center; max-width:700px; margin:0 auto 52px;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#2DD4BF; margin-bottom:14px;">Målgrupper</div>
+        <h2 class="w-sec-h" style="font-size:38px; line-height:46px; font-weight:700; letter-spacing:-.6px; margin:0; color:#fff;">För organisationer som behöver agera på rätt information</h2>
+      </div>
+      <div class="w-two-col" style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px;">
+        <sc-for list="{{ audiences }}" as="a" hint-placeholder-count="3">
+          <div id="{{ a.id }}" style="background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.015)); border:1px solid rgba(255,255,255,.09); border-radius:18px; padding:32px; transition:border-color .18s ease, transform .18s ease;" style-hover="border-color:rgba(45,212,191,.4); transform:translateY(-3px);">
+            <span style="display:inline-flex; width:52px; height:52px; align-items:center; justify-content:center; border-radius:14px; background:rgba(45,212,191,.10); border:1px solid rgba(45,212,191,.22); margin-bottom:20px;">{{ a.icon }}</span>
+            <h3 style="font-size:21px; line-height:28px; font-weight:600; margin:0 0 12px; color:#fff;">{{ a.title }}</h3>
+            <p style="font-size:15px; line-height:24px; color:#A0B5BA; margin:0;">{{ a.text }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECURITY (dark premium) ================= -->
+  <section id="sakerhet" class="w-pad" style="position:relative; padding:60px 40px; background:radial-gradient(900px 460px at 85% 15%, rgba(45,212,191,.13), transparent 60%), #040D12; overflow:hidden;">
+    <div class="w-two-col" style="max-width:1240px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;">
+      <div>
+        <div style="font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#2DD4BF; margin-bottom:14px;">Säkerhet &amp; integritet</div>
+        <h2 class="w-sec-h" style="font-size:38px; line-height:46px; font-weight:700; letter-spacing:-.6px; margin:0 0 18px; color:#fff;">Säkerhet och anonymitet i centrum</h2>
+        <p style="font-size:17px; line-height:27px; color:#A0B5BA; margin:0 0 30px; max-width:480px;">2Witness är byggt för situationer där förtroende, integritet och informationssäkerhet är avgörande.</p>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <sc-for list="{{ security }}" as="s" hint-placeholder-count="4">
+            <div style="display:flex; align-items:center; gap:14px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:16px 18px;">
+              <span style="display:inline-flex; width:40px; height:40px; align-items:center; justify-content:center; border-radius:11px; background:rgba(45,212,191,.12); flex-shrink:0;">{{ s.icon }}</span>
+              <span style="font-size:16px; font-weight:500; color:#E7F0F1;">{{ s.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="position:relative; display:flex; align-items:center; justify-content:center; min-height:380px;">
+        <div style="position:absolute; width:300px; height:300px; border-radius:50%; border:1px solid rgba(45,212,191,.12);"></div>
+        <div style="position:absolute; width:210px; height:210px; border-radius:50%; border:1px solid rgba(45,212,191,.18);"></div>
+        <div style="position:relative; width:130px; height:150px; display:flex; align-items:center; justify-content:center;">
+          <svg width="130" height="150" viewBox="0 0 130 150" fill="none">
+            <path d="M65 6 14 26v44c0 38 26 70 51 78 25-8 51-40 51-78V26L65 6Z" fill="rgba(45,212,191,.08)" stroke="rgba(45,212,191,.45)" stroke-width="1.5"></path>
+            <rect x="48" y="66" width="34" height="28" rx="5" fill="#0C2129" stroke="#2DD4BF" stroke-width="1.6"></rect>
+            <path d="M55 66v-7a10 10 0 0 1 20 0v7" stroke="#2DD4BF" stroke-width="1.6" fill="none"></path>
+            <circle cx="65" cy="78" r="3.5" fill="#2DD4BF"></circle>
+          </svg>
+          <div style="position:absolute; top:30px; left:-8px; right:-8px; height:2px; background:linear-gradient(90deg,transparent,#2DD4BF,transparent); animation:w-scan 3.4s ease-in-out infinite alternate; opacity:.7;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS FLOW ================= -->
+  <section class="w-pad" style="padding:60px 40px; background:#F3F6F5; color:#0B2027;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="text-align:center; max-width:640px; margin:0 auto 52px;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#2C9B8C; margin-bottom:14px;">Flödet</div>
+        <h2 class="w-sec-h" style="font-size:38px; line-height:46px; font-weight:700; letter-spacing:-.6px; margin:0; color:#0B2027;">Från signal till åtgärd</h2>
+      </div>
+      <div class="w-flow-row" style="display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap;">
+        <sc-for list="{{ flow }}" as="f" hint-placeholder-count="6">
+          <div class="w-flow-item" style="display:flex; align-items:center; gap:8px;">
+            <div class="w-flow-card" style="display:flex; flex-direction:column; align-items:center; background:#fff; border:1px solid #E6ECEA; border-radius:14px; padding:18px 16px; min-width:128px; text-align:center; box-shadow:0 1px 3px rgba(0,0,0,.04);">
+              <span class="w-flow-ico" style="display:inline-flex; width:42px; height:42px; align-items:center; justify-content:center; border-radius:11px; background:linear-gradient(135deg,rgba(45,212,191,.16),rgba(52,211,153,.12)); margin-bottom:11px;">{{ f.icon }}</span>
+              <div class="w-flow-lbl" style="font-size:13.5px; font-weight:600; color:#0B2027; line-height:18px;">{{ f.label }}</div>
+            </div>
+            <sc-if value="{{ f.arrow }}" hint-placeholder-val="{{ true }}">
+              <svg class="w-flow-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9FB9B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SOCIAL IMPACT ================= -->
+  <section class="w-pad" style="padding:60px 40px; background:#06141A;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="text-align:center; max-width:680px; margin:0 auto 50px;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#2DD4BF; margin-bottom:14px;">Samhällsnytta</div>
+        <h2 class="w-sec-h" style="font-size:38px; line-height:46px; font-weight:700; letter-spacing:-.6px; margin:0 0 16px; color:#fff;">För ett tryggare samhälle</h2>
+        <p style="font-size:18px; line-height:29px; color:#A0B5BA; margin:0;">När fler vågar rapportera får organisationer bättre beslutsunderlag, snabbare insikt och större möjlighet att förebygga framtida händelser.</p>
+      </div>
+      <div class="w-two-col" style="display:grid; grid-template-columns:repeat(4,1fr); gap:18px;">
+        <sc-for list="{{ impacts }}" as="i" hint-placeholder-count="4">
+          <div style="text-align:center; background:linear-gradient(180deg,rgba(45,212,191,.07),rgba(255,255,255,.015)); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:30px 20px;">
+            <span style="display:inline-flex; width:48px; height:48px; align-items:center; justify-content:center; border-radius:13px; background:rgba(45,212,191,.10); margin-bottom:16px;">{{ i.icon }}</span>
+            <div style="font-size:17px; font-weight:600; color:#fff;">{{ i.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DEMO / CONTACT FORM ================= -->
+  <section id="demo" class="w-pad" style="padding:40px 40px 96px; background:#06141A;">
+    <div class="w-two-col" style="max-width:1080px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; position:relative; border-radius:26px; overflow:hidden; background:radial-gradient(700px 360px at 95% -10%, rgba(45,212,191,.2), transparent 65%), linear-gradient(135deg,#0B2A30,#08191F); border:1px solid rgba(45,212,191,.22); padding:52px 48px; box-shadow:0 30px 80px rgba(0,0,0,.45);">
+      <div>
+        <div style="display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:100px; background:rgba(45,212,191,.12); border:1px solid rgba(45,212,191,.3); margin-bottom:22px;">
+          <span style="width:7px; height:7px; border-radius:50%; background:#2DD4BF;"></span>
+          <span style="font-size:12.5px; font-weight:500; color:#7FE8D8;">Hör av dig</span>
+        </div>
+        <h2 class="w-sec-h" style="font-size:38px; line-height:46px; font-weight:700; letter-spacing:-.8px; margin:0 0 16px; color:#fff;">Vill du se hur 2Witness fungerar?</h2>
+        <p style="font-size:17px; line-height:27px; color:#A9BDC2; margin:0 0 26px; max-width:440px;">Hör av dig så visar vi hur anonym rapportering och automatiska rapporter kan fungera i din organisation. Fyll i formuläret så återkommer vi.</p>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="display:flex; align-items:center; gap:12px; color:#C9DADD; font-size:15px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
+            <a href="/cdn-cgi/l/email-protection#adc4c3cbc2ed9fdac4d9c3c8dede83dec8" style="color:#C9DADD; text-decoration:none;"><span class="__cf_email__" data-cfemail="6c05020a032c5e1b051802091f1f421f09">[email&#160;protected]</span></a>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; color:#C9DADD; font-size:15px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12M9 21v-6h6v6"></path></svg>
+            <span>Teknikringen 1, 114 28 Stockholm</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:18px; padding:28px;">
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:28px 8px;">
+            <span style="display:inline-flex; width:60px; height:60px; align-items:center; justify-content:center; border-radius:50%; background:rgba(74,222,128,.14); border:1px solid rgba(74,222,128,.3); margin-bottom:18px;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+            </span>
+            <h3 style="font-size:21px; font-weight:600; color:#fff; margin:0 0 10px;">Tack för din förfrågan!</h3>
+            <p style="font-size:15px; line-height:23px; color:#A9BDC2; margin:0 0 22px;">Ditt e-postprogram öppnas med meddelandet till <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a6cfc8c0c9e694d1cfd2c8c3d5d588d5c3">[email&#160;protected]</a>. Skicka det så återkommer vi så snart vi kan.</p>
+            <button onClick="{{ reset }}" style="background:rgba(255,255,255,.06); color:#fff; font-weight:500; font-size:15px; padding:12px 22px; border-radius:8px; border:1px solid rgba(255,255,255,.18); cursor:pointer; font-family:inherit;">Skicka en till</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form class="w-demo-form" onSubmit="{{ submit }}" style="display:flex; flex-direction:column; gap:14px;">
+            <div>
+              <label style="display:block; font-size:11px; font-weight:600; letter-spacing:.44px; text-transform:uppercase; color:#7FA0A6; margin-bottom:7px;">Namn</label>
+              <input value="{{ form.name }}" onInput="{{ onName }}" required="" placeholder="För- och efternamn" style="width:100%; box-sizing:border-box; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:9px; padding:12px 14px; color:#fff; font-size:15px; font-family:inherit; outline:none;" style-focus="border-color:#2DD4BF; background:rgba(45,212,191,.06);">
+            </div>
+            <div>
+              <label style="display:block; font-size:11px; font-weight:600; letter-spacing:.44px; text-transform:uppercase; color:#7FA0A6; margin-bottom:7px;">Organisation</label>
+              <input value="{{ form.org }}" onInput="{{ onOrg }}" placeholder="Företag eller myndighet" style="width:100%; box-sizing:border-box; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:9px; padding:12px 14px; color:#fff; font-size:15px; font-family:inherit; outline:none;" style-focus="border-color:#2DD4BF; background:rgba(45,212,191,.06);">
+            </div>
+            <div style="display:flex; gap:12px;">
+              <div style="flex:1;">
+                <label style="display:block; font-size:11px; font-weight:600; letter-spacing:.44px; text-transform:uppercase; color:#7FA0A6; margin-bottom:7px;">E-post</label>
+                <input type="email" value="{{ form.email }}" onInput="{{ onEmail }}" required="" placeholder="namn@exempel.se" style="width:100%; box-sizing:border-box; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:9px; padding:12px 14px; color:#fff; font-size:15px; font-family:inherit; outline:none;" style-focus="border-color:#2DD4BF; background:rgba(45,212,191,.06);">
+              </div>
+              <div style="flex:1;">
+                <label style="display:block; font-size:11px; font-weight:600; letter-spacing:.44px; text-transform:uppercase; color:#7FA0A6; margin-bottom:7px;">Telefon</label>
+                <input value="{{ form.phone }}" onInput="{{ onPhone }}" placeholder="Valfritt" style="width:100%; box-sizing:border-box; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:9px; padding:12px 14px; color:#fff; font-size:15px; font-family:inherit; outline:none;" style-focus="border-color:#2DD4BF; background:rgba(45,212,191,.06);">
+              </div>
+            </div>
+            <div>
+              <label style="display:block; font-size:11px; font-weight:600; letter-spacing:.44px; text-transform:uppercase; color:#7FA0A6; margin-bottom:7px;">Meddelande</label>
+              <textarea value="{{ form.message }}" onInput="{{ onMessage }}" rows="3" placeholder="Berätta kort om er situation eller vad ni vill se" style="width:100%; box-sizing:border-box; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:9px; padding:12px 14px; color:#fff; font-size:15px; font-family:inherit; outline:none; resize:vertical;" style-focus="border-color:#2DD4BF; background:rgba(45,212,191,.06);"></textarea>
+            </div>
+            <button type="submit" style="display:flex; align-items:center; justify-content:center; gap:9px; background:linear-gradient(135deg,#2DD4BF,#34D399); color:#04121A; font-weight:600; font-size:16px; padding:15px; border-radius:9px; border:none; cursor:pointer; font-family:inherit; box-shadow:0 10px 30px rgba(45,212,191,.3); transition:transform .15s ease, box-shadow .15s ease;" style-hover="transform:translateY(-2px); box-shadow:0 16px 38px rgba(45,212,191,.48);">{{ submitLabel }}
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#04121A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </button>
+            <p style="font-size:12px; line-height:18px; color:#6F8990; margin:0; text-align:center;">Skickas till <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6d04030b022d5f1a041903081e1e431e08">[email&#160;protected]</a>. Vi behandlar dina uppgifter konfidentiellt.</p>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="w-pad" style="padding:60px 40px; background:#F3F6F5; color:#0B2027;">
+    <div style="max-width:820px; margin:0 auto;">
+      <div style="text-align:center; margin-bottom:46px;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#2C9B8C; margin-bottom:14px;">Vanliga frågor</div>
+        <h2 class="w-sec-h" style="font-size:38px; line-height:46px; font-weight:700; letter-spacing:-.6px; margin:0; color:#0B2027;">Frågor och svar</h2>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="7">
+          <div style="background:#fff; border:1px solid {{ f.border }}; border-radius:14px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.04);">
+            <button onClick="{{ f.onToggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 24px; background:none; border:none; cursor:pointer; text-align:left; font-family:inherit;">
+              <span style="font-size:16.5px; font-weight:600; color:#0B2027;">{{ f.q }}</span>
+              <span style="flex-shrink:0; width:28px; height:28px; border-radius:8px; background:{{ f.iconBg }}; display:inline-flex; align-items:center; justify-content:center; transition:transform .2s ease; transform:{{ f.rotate }};">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="{{ f.iconStroke }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
+              </span>
+            </button>
+            <div style="max-height:{{ f.maxH }}; overflow:hidden; transition:max-height .3s ease;">
+              <p style="margin:0; padding:0 24px 22px; font-size:15px; line-height:24px; color:#5A6B70;">{{ f.a }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="w-pad" style="padding:64px 40px 40px; background:#040D12; border-top:1px solid rgba(255,255,255,.07);">
+    <div class="w-two-col" style="max-width:1240px; margin:0 auto; display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; margin-bottom:48px;">
+      <div>
+        <div style="display:flex; align-items:center; gap:11px; margin-bottom:18px;">
+          <span style="display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; border-radius:10px; background:linear-gradient(135deg,#2DD4BF,#34D399);">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M12 2.6 4.4 5.8v5.1c0 4.6 3.2 8.9 7.6 10.3 4.4-1.4 7.6-5.7 7.6-10.3V5.8L12 2.6Z" fill="#04121A"></path><circle cx="12" cy="10.6" r="2.5" fill="#2DD4BF"></circle><path d="M7.6 16.2c.7-1.9 2.4-3 4.4-3s3.7 1.1 4.4 3" stroke="#2DD4BF" stroke-width="1.5" stroke-linecap="round"></path></svg>
+          </span>
+          <span style="font-weight:700; font-size:19px; color:#fff;">2Witness</span>
+        </div>
+        <p style="font-size:14.5px; line-height:23px; color:#7E969C; margin:0 0 18px; max-width:340px;">En säker och anonym rapporteringskanal – från vittnesmål till färdig rapport. Byggd för trygghet, integritet och informationssäkerhet.</p>
+        <a href="/cdn-cgi/l/email-protection#6e070008012e5c19071a000b1d1d401d0b" style="font-size:14.5px; color:#7DE8D8; text-decoration:none; font-weight:500;"><span class="__cf_email__" data-cfemail="0b62656d644b397c627f656e787825786e">[email&#160;protected]</span></a>
+      </div>
+      <div>
+        <div style="font-size:12px; font-weight:600; letter-spacing:.6px; text-transform:uppercase; color:#5C757B; margin-bottom:16px;">Länkar</div>
+        <div style="display:flex; flex-direction:column; gap:11px;">
+          <a href="#demo" style="font-size:14.5px; color:#B4C6CB; text-decoration:none;" style-hover="color:#fff;">Kontakt</a>
+          <a href="#sakerhet" style="font-size:14.5px; color:#B4C6CB; text-decoration:none;" style-hover="color:#fff;">Säkerhet</a>
+          <a href="#sakerhet" style="font-size:14.5px; color:#B4C6CB; text-decoration:none;" style-hover="color:#fff;">Integritet</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px; font-weight:600; letter-spacing:.6px; text-transform:uppercase; color:#5C757B; margin-bottom:16px;">Kontakt</div>
+        <p style="font-size:14.5px; line-height:23px; color:#7E969C; margin:0;">Teknikringen 1<br>114 28 Stockholm<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ff6f1f9f0dfade8f6ebf1faececb1ecfa">[email&#160;protected]</a></p>
+      </div>
+    </div>
+    <div style="max-width:1240px; margin:0 auto; padding-top:24px; border-top:1px solid rgba(255,255,255,.06); display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center;">
+      <span style="font-size:13px; color:#5C757B;">© 2026 2Witness. Alla rättigheter förbehållna.</span>
+      <span style="font-size:13px; color:#5C757B;">Byggt med säkerhet i fokus.</span>
+    </div>
+  </footer>
+
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { vw: 1280, openFaq: 0, menuOpen: false, sent: false, phoneSent: false, form: { name: '', org: '', email: '', phone: '', message: '' } };
+
+  setField(key, val) { this.setState(s => ({ form: { ...s.form, [key]: val } })); }
+
+  submitForm(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const f = this.state.form;
+    const subject = 'Kontaktförfrågan – 2Witness';
+    const lines = [
+      'Namn: ' + (f.name || '-'),
+      'Organisation: ' + (f.org || '-'),
+      'E-post: ' + (f.email || '-'),
+      'Telefon: ' + (f.phone || '-'),
+      '',
+      'Meddelande:',
+      (f.message || '-'),
+    ];
+    const href = 'mailto:info@2witness.se?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+    window.location.href = href;
+    this.setState({ sent: true });
+  }
+
+  componentDidMount() {
+    this._u = () => this.setState({ vw: window.innerWidth });
+    this._u();
+    window.addEventListener('resize', this._u);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this._u); }
+
+  renderVals() {
+    const svg = (sz, p, stroke) => React.createElement('svg', { width: sz, height: sz, viewBox: '0 0 24 24', fill: 'none', stroke: stroke || '#2DD4BF', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round', dangerouslySetInnerHTML: { __html: p } });
+    const ic = (p, stroke) => svg(22, p, stroke);
+    const icSm = (p, stroke) => svg(20, p, stroke);
+
+    const heroBadges = ['Anonym rapportering', 'Krypterad kommunikation', 'Realtidsrapport', 'Byggt med säkerhet i fokus'];
+
+    const reportSteps = [
+      { label: 'Anonymt mottaget', time: '0 sek', done: true, active: false, dotBg: 'linear-gradient(135deg,#2DD4BF,#34D399)', dotBorder: 'transparent', txt: '#E7F0F1' },
+      { label: 'Rapport skapad', time: '2 sek', done: true, active: false, dotBg: 'linear-gradient(135deg,#2DD4BF,#34D399)', dotBorder: 'transparent', txt: '#E7F0F1' },
+      { label: 'Redo för åtgärd', time: 'nu', done: false, active: true, dotBg: 'rgba(45,212,191,.12)', dotBorder: 'rgba(45,212,191,.5)', txt: '#9FB6BB' },
+    ];
+    const chartBars = ['60%', '38%', '85%', '52%', '70%', '44%'];
+
+    const problems = [
+      { title: 'Rädsla för att bli identifierad', text: 'Oron att kopplas till en anmälan gör att många hellre tiger än berättar vad de sett.', icon: ic('<path d="M9.9 4.24A9 9 0 0 1 21 12a9 9 0 0 1-1.5 5M6.6 6.6A9 9 0 0 0 12 21a9 9 0 0 0 4.8-1.4"/><path d="M12 9a3 3 0 0 1 3 3M3 3l18 18"/>', '#D98A6A') },
+      { title: 'Krångliga rapporteringsvägar', text: 'Otydliga rutiner och tunga formulär gör att processen avbryts innan informationen kommit fram.', icon: ic('<path d="M14 2v6h6M14 2l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8Z"/><path d="M9 13h6M9 17h4"/>', '#D98A6A') },
+      { title: 'Otydliga och ofullständiga underlag', text: 'Spridd information i mejl och samtal blir svår att agera på och viktiga detaljer faller bort.', icon: ic('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v3M11 14h.01"/>', '#D98A6A') },
+    ];
+
+    const steps = [
+      { num: '1', title: 'Rapportera anonymt', text: 'Personen lämnar information tryggt via en säker digital kanal.', icon: ic('<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>') },
+      { num: '2', title: 'Strukturera händelsen', text: 'Plattformen guidar användaren så att rätt information samlas in.', icon: ic('<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>') },
+      { num: '3', title: 'Få en färdig rapport', text: 'Organisationen får ett tydligt, datadrivet underlag redo att hanteras.', icon: ic('<path d="M14 2v6h6M14 2l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8Z"/><path d="M9 14l2 2 4-4"/>') },
+    ];
+
+    const features = [
+      { title: 'Anonym rapportering', text: 'Sänk tröskeln för att dela viktig information.', icon: ic('<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>') },
+      { title: 'Säker kommunikation', text: 'Skydda känslig information genom hela processen.', icon: ic('<path d="M12 2 4 5v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V5l-8-3Z"/><path d="M9 12l2 2 4-4"/>') },
+      { title: 'Automatiska rapporter', text: 'Skapa tydliga rapporter i realtid utan manuell administration.', icon: ic('<path d="M14 2v6h6M14 2l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8Z"/><path d="M12 18v-6M9 15l3 3 3-3"/>') },
+      { title: 'Datadriven överblick', text: 'Se mönster, kategorier och återkommande risker över tid.', icon: ic('<path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/>') },
+    ];
+
+    const audiences = [
+      { id: 'foretag', title: 'Företag', text: 'Fånga upp incidenter, hot, trakasserier, arbetsmiljöproblem och säkerhetsrisker innan de växer.', icon: ic('<path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/><path d="M9 9v.01M9 13v.01M9 17v.01"/>') },
+      { id: 'myndigheter', title: 'Myndigheter', text: 'Skapa tryggare vägar för människor att dela känslig information och vittnesmål.', icon: ic('<path d="M3 21h18M4 10h16M5 10 12 4l7 6M6 10v11M18 10v11M10 10v11M14 10v11"/>') },
+      { id: 'samhalle', title: 'Fastighetsägare, skolor & samhällsaktörer', text: 'Gör det enklare att rapportera oro, händelser och risker i miljöer där många människor rör sig.', icon: ic('<path d="M3 21V9l9-6 9 6v12M9 21v-6h6v6"/>') },
+    ];
+
+    const security = [
+      { text: 'Krypterad informationshantering', icon: icSm('<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>') },
+      { text: 'Anonymiserade rapportflöden', icon: icSm('<path d="M9.9 4.24A9 9 0 0 1 21 12a9 9 0 0 1-1.5 5M6.6 6.6A9 9 0 0 0 12 21a9 9 0 0 0 4.8-1.4M3 3l18 18"/>') },
+      { text: 'Rollbaserad åtkomst', icon: icSm('<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6M16 11l2 2 4-4"/>') },
+      { text: 'Spårbar hantering utan att röja rapportören', icon: icSm('<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>') },
+    ];
+
+    const flow = [
+      { label: 'Användare', arrow: true, icon: icSm('<circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>') },
+      { label: 'Anonym rapport', arrow: true, icon: icSm('<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>') },
+      { label: 'Säker insamling', arrow: true, icon: icSm('<path d="M12 2 4 5v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V5l-8-3Z"/>') },
+      { label: 'Automatisk strukturering', arrow: true, icon: icSm('<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>') },
+      { label: 'Färdig rapport', arrow: true, icon: icSm('<path d="M14 2v6h6M14 2l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8Z"/>') },
+      { label: 'Åtgärd', arrow: false, icon: icSm('<path d="M20 6 9 17l-5-5"/>') },
+    ];
+
+    const impacts = [
+      { label: 'Snabbare rapportering', icon: ic('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>') },
+      { label: 'Lägre tröskel', icon: ic('<path d="M3 13h18M7 9l-4 4 4 4M21 13a9 9 0 0 0-9-9"/>') },
+      { label: 'Tydligare underlag', icon: ic('<path d="M14 2v6h6M14 2l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8Z"/><path d="M9 13h6M9 17h4"/>') },
+      { label: 'Bättre åtgärder', icon: ic('<path d="M12 2 4 5v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V5l-8-3Z"/><path d="M9 12l2 2 4-4"/>') },
+    ];
+
+    const faqData = [
+      { q: 'Är rapporteringen anonym?', a: 'Ja. 2Witness är byggt så att en rapport kan lämnas helt anonymt. Rapportören behöver inte uppge namn eller kontaktuppgifter, och systemet är utformat för att inte röja vem som lämnat informationen.' },
+      { q: 'Vem kan använda 2Witness?', a: 'Plattformen vänder sig till individer, företag, myndigheter, fastighetsägare, skolor och andra samhällsaktörer som behöver en trygg väg att ta emot och hantera känslig information.' },
+      { q: 'Kan plattformen användas internt i företag?', a: 'Ja. 2Witness kan användas internt i företag för att fånga upp incidenter, arbetsmiljöproblem, trakasserier och säkerhetsrisker innan de växer.' },
+      { q: 'Hur skapas rapporterna?', a: 'När en händelse rapporteras guidar plattformen användaren genom rätt frågor och strukturerar informationen automatiskt till en tydlig, datadriven rapport i realtid.' },
+      { q: 'Kan rapporter kategoriseras?', a: 'Ja. Rapporter kan kategoriseras efter typ, allvarsgrad och område, vilket gör det enkelt att se mönster och återkommande risker över tid.' },
+      { q: 'Hur hanteras känslig information?', a: 'Informationen hanteras krypterat med rollbaserad åtkomst. Hanteringen är spårbar för organisationen samtidigt som rapportörens identitet skyddas.' },
+      { q: 'Hur kommer vi i kontakt med er?', a: 'Hör av dig via kontaktformuläret längst ner på sidan eller mejla info@2witness.se, så går vi igenom hur anonym rapportering och automatiska rapporter kan fungera just i din organisation.' },
+    ];
+    const faqs = faqData.map((f, i) => {
+      const open = this.state.openFaq === i;
+      return {
+        q: f.q, a: f.a,
+        border: open ? '#BEEAE2' : '#E6ECEA',
+        iconBg: open ? 'linear-gradient(135deg,#2DD4BF,#34D399)' : '#EEF2F1',
+        iconStroke: open ? '#04121A' : '#5A6B70',
+        rotate: open ? 'rotate(180deg)' : 'rotate(0deg)',
+        maxH: open ? '200px' : '0px',
+        onToggle: () => this.setState(s => ({ openFaq: s.openFaq === i ? -1 : i })),
+      };
+    });
+
+    return {
+      menuOpen: this.state.menuOpen,
+      phoneSent: this.state.phoneSent,
+      phoneNotSent: !this.state.phoneSent,
+      sendPhone: () => this.setState({ phoneSent: true }),
+      resetPhone: () => this.setState({ phoneSent: false }),
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      heroBadges, reportSteps, chartBars, problems, steps, features, audiences, security, flow, impacts, faqs,
+      // form
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      form: this.state.form,
+      submit: (e) => this.submitForm(e),
+      reset: () => this.setState({ sent: false, form: { name: '', org: '', email: '', phone: '', message: '' } }),
+      onName: (e) => this.setField('name', e.target.value),
+      onOrg: (e) => this.setField('org', e.target.value),
+      onEmail: (e) => this.setField('email', e.target.value),
+      onPhone: (e) => this.setField('phone', e.target.value),
+      onMessage: (e) => this.setField('message', e.target.value),
+      submitLabel: 'Skicka meddelande',
+    };
+  }
+}
+</script>
+</body>
+</html>
